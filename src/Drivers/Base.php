@@ -3,11 +3,11 @@
 namespace Tylercd100\Notify\Drivers;
 
 use Monolog\Logger;
-use Tylercd100\Notify\Factory;
+use Tylercd100\Notify\Factories\MonologHandlerFactory as Factory;
 
 class Base
 {
-    const LEVELS = ["debug","info","notice","warning","error","critical","alert","emergency"];
+    protected $levels = ["debug","info","notice","warning","error","critical","alert","emergency"];
 
     /**
      * @var array
@@ -26,8 +26,8 @@ class Base
         //Merge the existing config with the provided config
         $this->config = array_merge_recursive(config('notify'),$config);
 
-        if($logger instanceof Logger){
-            $logger = new Logger();
+        if(!$logger instanceof Logger){
+            $logger = new Logger($this->config['channel']);
         }
         $this->logger = $logger;
 
@@ -43,7 +43,7 @@ class Base
     }
 
     protected function getHandlerInstanceByName($name){
-        $config = $this->config[$name] || [];
+        $config = (isset($this->config[$name]) ? $this->config[$name] : []);
         return Factory::create($name,$config);
     }
 
@@ -72,7 +72,7 @@ class Base
      */
     public function __call($method, $arguments)
     {
-        if(in_array($method, self::LEVELS)){
+        if(in_array($method, $this->levels)){
             call_user_func([$this->logger,$method],$arguments);
         }
     }

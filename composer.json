@@ -1,14 +1,13 @@
 {
-    "name": "zenapply/laravel-notify",
+    "name": "tylercd100/laravel-notify",
     "description": "",
     "keywords": [
         "laravel",
         "notifications",
         "monolog",
-        "tylercd100",
-        "zenapply"
+        "tylercd100"
     ],
-    "homepage": "https://github.com/zenapply/laravel-notify",
+    "homepage": "https://github.com/tylercd100/laravel-notify",
     "license": "MIT",
     "authors": [
         {
@@ -18,21 +17,23 @@
     ],
     "autoload":{
         "psr-4":{
-            "Zenapply\\Notify\\":"src/"
+            "Tylercd100\\Notify\\":"src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zenapply\\Notify\\Tests\\": "tests/"
+            "Tylercd100\\Notify\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",
     "require": {
         "php": "^5.5.9|^7.0",
+        "illuminate/support": "^5.0.0",
         "monolog/monolog": "^1.11"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8|^5.0"
+        "phpunit/phpunit": "^4.8|^5.0",
+        "orchestra/testbench": "^3.1.0"
     },
     "suggest": {
     }

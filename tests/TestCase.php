@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenapply\Monolog\Base\Tests;
+namespace Tylercd100\Notify\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -25,6 +25,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
+            'Tylercd100\Notify\Providers\NotifyServiceProvider',
         ];
     }
 
@@ -34,6 +35,10 @@ class TestCase extends Orchestra
     protected function getPackageAliases($app)
     {
         return [
+            'Tylercd100\Notify\Facades\Notify',
+            'Tylercd100\Notify\Facades\Pushover',
+            'Tylercd100\Notify\Facades\Slack',
+            'Tylercd100\Notify\Facades\HipChat',
         ];
     }
 
@@ -45,6 +50,79 @@ class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
+        $app['config']->set('notify',[
+
+            'channel'=>'Tylercd100\Notify',
+
+            /**
+             * The drivers to use
+             */
+            'drivers' => ['pushover','slack','hipchat'],
+
+            /**
+             * Pushover settings
+             */
+            'pushover'=>[
+                'token' => "Token",
+                'users' => [
+                    "User",
+                ],
+                'sound' => "Sound",
+            ],
+
+            /**
+             * Slack settings
+             */
+            'slack'=>[
+                'token'   => "Token",
+                'channel' => "Value",
+                'username'=> "Value",
+            ],
+
+            /**
+             * HipChat settings
+             */
+            'hipchat'=>[
+                'token' => "Token",
+                'room'  => 'room',
+                'name'  => 'name',
+                'notify'=> true,
+            ],
+
+            /**
+             * Flowdock settings
+             */
+            'flowdock'=>[
+                'token' => "Token",
+            ],
+
+            /**
+             * Fleephook settings
+             */
+            'fleephook'=>[
+                'token' => "Token",
+            ],
+
+            /**
+             * Plivo settings
+             */
+            'plivo'=>[
+                'auth_id' => "Value",
+                'token'   => "Token",
+                'to'      => "Value",
+                'from'    => "Value",
+            ],
+
+            /**
+             * Twilio settings
+             */
+            'twilio'=>[
+                'sid'    => "Value",
+                'secret' => "Value",
+                'to'     => "Value",
+                'from'   => "Value",
+            ]
+        ]);
     }
 
     /**
