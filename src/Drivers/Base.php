@@ -3,10 +3,14 @@
 namespace Tylercd100\Notify\Drivers;
 
 use Monolog\Logger;
+use Monolog\Handler\HandlerInterface;
 use Tylercd100\Notify\Factories\MonologHandlerFactory as Factory;
 
-class Base
+abstract class Base
 {
+    /**
+     * @var array
+     */
     protected $levels = ["debug","info","notice","warning","error","critical","alert","emergency"];
 
     /**
@@ -15,12 +19,13 @@ class Base
     protected $config;
 
     /**
-     * @var array
+     * @var Logger
      */
     protected $logger;
 
     /**
-     * @param array $config An array of config values to overwrite
+     * @param array  $config An array of config values to overwrite
+     * @param Logger $logger A Monolog instance to use
      */
     public function __construct(array $config = [], Logger $logger = null){
         //Merge the existing config with the provided config
@@ -38,16 +43,24 @@ class Base
      * Returns a list of names that correspond to a config key and the Tylercd100\Notify\Factory::create method
      * @return array An array of drivers to use
      */
-    protected function getDrivers(){
-        return [];
-    }
+    abstract protected function getDrivers();
 
+    /**
+     * Gets a hanlder instance for the provided name
+     * @param  string $name The name of the driver you want to use
+     * @return HandlerInterface
+     */
     protected function getHandlerInstanceByName($name){
         $config = (isset($this->config[$name]) ? $this->config[$name] : []);
         return Factory::create($name,$config);
     }
 
-    protected function attachHandler($handler){
+    /**
+     * Pushes a Monolog Handler in to the Monolog Logger instance
+     * @param  HandlerInterface $handler The Handler to attach
+     * @return void
+     */
+    protected function attachHandler(HandlerInterface $handler){
         $this->logger->pushHandler($handler);
     }
 
