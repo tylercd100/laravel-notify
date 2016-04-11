@@ -43,7 +43,7 @@ php artisan vendor:publish --provider="Tylercd100\Notify\Providers\NotifyService
 
 ## Usage
 
-After you have changed your configuration file you can simply use it like so:
+After you have changed your configuration file (`config/notify.php`) you can simply use it like so:
 ```php
 Notify::debug("This is a debug message!");
 Notify::info("This is a info message!");
