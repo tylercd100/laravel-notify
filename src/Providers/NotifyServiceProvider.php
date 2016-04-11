@@ -5,6 +5,7 @@ namespace Tylercd100\Notify\Providers;
 use Illuminate\Support\ServiceProvider;
 use Tylercd100\Notify\Drivers\FromConfig;
 use Tylercd100\Notify\Drivers\HipChat;
+use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Pushover;
 use Tylercd100\Notify\Drivers\Slack;
 
@@ -27,6 +28,10 @@ class NotifyServiceProvider extends ServiceProvider
 
         $this->app->singleton('notify-hipchat', function() {
             return new HipChat;
+        });
+
+        $this->app->singleton('notify-mail', function() {
+            return new Mail;
         });
     }
 

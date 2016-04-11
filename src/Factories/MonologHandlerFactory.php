@@ -3,6 +3,8 @@
 namespace Tylercd100\Notify\Factories;
 
 use Monolog\Logger;
+use Mail;
+use Swift_Message;
 
 class MonologHandlerFactory
 {
@@ -20,7 +22,7 @@ class MonologHandlerFactory
      * Returns a PushoverHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\HandlerInterface
+     * @return \Monolog\Handler\PushoverHandler
      */
     protected static function pushover(array $config = [], $title = null){
         $defaults = [
@@ -55,14 +57,14 @@ class MonologHandlerFactory
      * Returns a SlackHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\HandlerInterface
+     * @return \Monolog\Handler\SlackHandler
      */
     protected static function slack(array $config = [], $title = null){
         $defaults = [
             'username' => 'Monolog', 
             'useAttachment' => true, 
             'iconEmoji' => null, 
-            'level' => Logger::CRITICAL, 
+            'level' => Logger::DEBUG, 
             'bubble' => true, 
             'useShortAttachment' => false, 
             'includeContextAndExtra' => false
@@ -86,13 +88,13 @@ class MonologHandlerFactory
      * Returns a HipChatHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\HandlerInterface
+     * @return \Monolog\Handler\HipChatHandler
      */
     protected static function hipchat(array $config = [], $title = null){
         $defaults = [
             'name'    => 'Monolog',
             'notify'  => false,
-            'level'   => Logger::CRITICAL,
+            'level'   => Logger::DEBUG,
             'bubble'  => true,
             'useSSL'  => true,
             'format'  => 'text',
@@ -113,5 +115,73 @@ class MonologHandlerFactory
             $c['format'],
             $c['host'],
             $c['version']);
+    }
+
+    /**
+     * Creates Mail Monolog Handler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\MailHandler
+     */
+    protected static function mail(array $config = [], $title = null)
+    {
+        if (isset($config['smtp']) && $config['smtp']) {
+            return self::swiftMail($config,$title);            
+        } else {
+            return self::nativeMail($config,$title);
+        }
+    }
+
+    /**
+     * Creates Mail Monolog Handler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\SwiftMailerHandler
+     */
+    protected static function swiftMail(array $config, $title = null)
+    {
+        $defaults = [
+            'level' => Logger::DEBUG, 
+            'bubble' => true
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        $c['title'] = $title;
+
+        return new \Monolog\Handler\SwiftMailerHandler(
+            Mail::getSwiftMailer(),
+            Swift_Message::newInstance($c['title'])->setFrom($c['from'])->setTo($c['to']),
+            $c['level'], 
+            $c['bubble']
+        );
+    }
+
+    /**
+     * Creates Mail Monolog Handler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\NativeMailerHandler
+     */
+    protected static function nativeMail(array $config, $title = null)
+    {
+        $defaults = [
+            'level' => Logger::DEBUG,
+            'bubble' => true,
+            'maxColumnWidth' => 70
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        $c['title'] = $title;
+
+        return new \Monolog\Handler\NativeMailerHandler(
+            $c['to'],
+            $c['title'],
+            $c['from'],
+            $c['level'], 
+            $c['bubble'], 
+            $c['maxColumnWidth']
+        );
     }
 }

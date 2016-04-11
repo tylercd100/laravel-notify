@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.2.0
+- Added email support
+
 ### 1.1.1
 - Can now set the title from the constructor
 

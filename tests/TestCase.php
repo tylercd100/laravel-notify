@@ -60,6 +60,15 @@ class TestCase extends Orchestra
             'drivers' => ['pushover','slack','hipchat'],
 
             /**
+             * Mail settings
+             */
+            'mail'=>[
+                'to'  =>'to@address.com',
+                'from'=>'from@address.com',
+                'smtp'=>true,
+            ],
+            
+            /**
              * Pushover settings
              */
             'pushover'=>[

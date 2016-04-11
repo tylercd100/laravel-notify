@@ -7,7 +7,16 @@ return [
     /**
      * The SMS service to use. twilio or plivo
      */
-    'drivers' => ['pushover','slack'],
+    'drivers' => ['mail'],
+
+    /**
+     * Mail settings
+     */
+    'mail'=>[
+        'to'  =>'to@address.com',
+        'from'=>'from@address.com',
+        'smtp'=>true,
+    ],
 
     /**
      * Pushover settings
