@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.4.1
+- Removed array_merge_recursive which was not correctly merging config values that were provided in the constructor
+
 ### 1.4.0
 - Added Flowdock and FleepHook support
 
