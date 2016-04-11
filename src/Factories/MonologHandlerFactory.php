@@ -55,6 +55,46 @@ class MonologHandlerFactory
     }
 
     /**
+     * Returns a FlowdockHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\FlowdockHandler
+     */
+    protected static function flowdock(array $config = [], $title = null){
+        $defaults = [
+            "level" => Logger::DEBUG,
+            "bubble" => true,
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        return new \Monolog\Handler\FlowdockHandler(
+            $c['token'], 
+            $c['level'], 
+            $c['bubble']);
+    }
+
+    /**
+     * Returns a FleepHookHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\FleepHookHandler
+     */
+    protected static function fleephook(array $config = [], $title = null){
+        $defaults = [
+            "level" => Logger::DEBUG,
+            "bubble" => true,
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        return new \Monolog\Handler\FleepHookHandler(
+            $c['token'], 
+            $c['level'], 
+            $c['bubble']);
+    }
+
+    /**
      * Returns a PlivoHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use

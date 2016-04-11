@@ -7,6 +7,8 @@ use Tylercd100\Notify\Drivers\FromConfig;
 use Tylercd100\Notify\Drivers\HipChat;
 use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Pushover;
+use Tylercd100\Notify\Drivers\Flowdock;
+use Tylercd100\Notify\Drivers\FleepHook;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Twilio;
@@ -16,33 +18,19 @@ class NotifyServiceProvider extends ServiceProvider
     public function register() {
         $this->mergeConfigFrom(__DIR__ . '/../../config/notify.php', 'notify');
 
-        $this->app->singleton('notify', function() {
-            return new FromConfig;
-        });
+        $registerMap = [
+            'notify' => FromConfig::class,
+            'notify-pushover' => Pushover::class,
+            'notify-slack' => Slack::class,
+            'notify-hipchat' => HipChat::class,
+            'notify-mail' => Mail::class,
+            'notify-twilio' => Twilio::class,
+            'notify-plivo' => Plivo::class,
+            'notify-fleephook' => FleepHook::class,
+            'notify-flowdock' => Flowdock::class,
+        ];
 
-        $this->app->singleton('notify-pushover', function() {
-            return new Pushover;
-        });
-
-        $this->app->singleton('notify-slack', function() {
-            return new Slack;
-        });
-
-        $this->app->singleton('notify-hipchat', function() {
-            return new HipChat;
-        });
-
-        $this->app->singleton('notify-mail', function() {
-            return new Mail;
-        });
-
-        $this->app->singleton('notify-twilio', function() {
-            return new Twilio;
-        });
-
-        $this->app->singleton('notify-plivo', function() {
-            return new Plivo;
-        });
+        $this->registerSingletonsFromMap($registerMap);
     }
 
     public function boot()
@@ -50,5 +38,13 @@ class NotifyServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/notify.php' => base_path('config/notify.php'),
         ]);   
+    }
+
+    private function registerSingletonsFromMap($map){
+        foreach ($map as $key => $class) {
+            $this->app->singleton($key, function() use ($class){
+                return new $class;
+            });
+        }
     }
 }

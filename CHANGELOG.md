@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.4.0
+- Added Flowdock and FleepHook support
+
 ### 1.3.1
 - Fixed Plivo acting as Twilio
 
