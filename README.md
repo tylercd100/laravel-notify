@@ -33,7 +33,7 @@ Tylercd100\Notify\Providers\NotifyServiceProvider::class
 
 and this to the `aliases` array in `config/app.php`
 ```php
-"Notify" => Tylercd100\Notify\Facades\Notify,
+"Notify" => Tylercd100\Notify\Facades\Notify::class,
 ```
 
 Then you will need to run this in order to copy the config file.
