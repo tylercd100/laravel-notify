@@ -7,7 +7,7 @@ use Tylercd100\Notify;
 class Pushover extends Base
 {
     /**
-     * Returns an array of names that correspond to a config key and the Tylercd100\Notify\Factory::create method
+     * Returns a list of driver names to load
      * @return array An array of drivers to use
      */
     protected function getDrivers(){

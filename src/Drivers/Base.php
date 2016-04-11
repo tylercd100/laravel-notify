@@ -24,10 +24,16 @@ abstract class Base
     protected $logger;
 
     /**
+     * @var string
+     */
+    private $title;
+
+    /**
      * @param array  $config An array of config values to overwrite
      * @param Logger $logger A Monolog instance to use
+     * @param string $title  The title to set for the handlers
      */
-    public function __construct(array $config = [], Logger $logger = null){
+    public function __construct(array $config = [], Logger $logger = null, $title = ""){
         //Merge the existing config with the provided config
         $this->config = array_merge_recursive(config('notify'),$config);
 
@@ -35,24 +41,25 @@ abstract class Base
             $logger = new Logger($this->config['channel']);
         }
         $this->logger = $logger;
+        $this->title = $title;
 
         $this->attachDrivers();
     }
 
     /**
-     * Returns an array of names that correspond to a config key and the Tylercd100\Notify\Factory::create method
+     * Returns a list of driver names to load
      * @return array An array of drivers to use
      */
     abstract protected function getDrivers();
 
     /**
-     * Gets a hanlder instance for the provided name
+     * Gets a handler instance for the provided name
      * @param  string $name The name of the driver you want to use
      * @return HandlerInterface
      */
     protected function getHandlerInstanceByName($name){
         $config = (isset($this->config[$name]) ? $this->config[$name] : []);
-        return Factory::create($name,$config);
+        return Factory::create($name,$config,$this->title);
     }
 
     /**
