@@ -2,8 +2,8 @@
 
 namespace Tylercd100\Notify\Factories;
 
-use Monolog\Logger;
 use Mail;
+use Monolog\Logger;
 use Swift_Message;
 
 class MonologHandlerFactory
@@ -12,6 +12,7 @@ class MonologHandlerFactory
      * Returns an instance of \Monolog\Handler\HandlerInterface
      * @param  string $name   Then name of the handler you want to create
      * @param  array  $config An array of config values to use
+     * @param string $title
      * @return \Monolog\Handler\HandlerInterface
      */
     public static function create($name, array $config = [], $title = null){
