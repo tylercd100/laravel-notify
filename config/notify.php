@@ -5,7 +5,7 @@ return [
     'channel'=>'Tylercd100\Notify',
 
     /**
-     * The SMS service to use. twilio or plivo
+     * Drivers to use for your notifications
      */
     'drivers' => ['mail'],
 
@@ -24,7 +24,6 @@ return [
     'pushover'=>[
         'token' => env('PUSHOVER_APP_TOKEN'),
         'users' => [env('PUSHOVER_USER_KEY')],
-        'sound' => env('PUSHOVER_SOUND_ERROR', 'siren'), // https://pushover.net/api#sounds
     ],
 
     /**
