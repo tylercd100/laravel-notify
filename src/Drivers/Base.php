@@ -40,7 +40,7 @@ abstract class Base
     }
 
     /**
-     * Returns a list of names that correspond to a config key and the Tylercd100\Notify\Factory::create method
+     * Returns an array of names that correspond to a config key and the Tylercd100\Notify\Factory::create method
      * @return array An array of drivers to use
      */
     abstract protected function getDrivers();
@@ -86,7 +86,7 @@ abstract class Base
     public function __call($method, $arguments)
     {
         if(in_array($method, $this->levels)){
-            call_user_func([$this->logger,$method],$arguments);
+            call_user_func_array([$this->logger,$method],$arguments);
         }
     }
 }
