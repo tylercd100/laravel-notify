@@ -11,6 +11,6 @@ class Plivo extends Base
      * @return array An array of drivers to use
      */
     protected function getDrivers(){
-        return ['twilio'];
+        return ['plivo'];
     }
 }
