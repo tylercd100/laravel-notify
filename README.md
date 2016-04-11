@@ -6,3 +6,76 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/tylercd100/laravel-notify/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/tylercd100/laravel-notify/?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187)
 [![Total Downloads](https://img.shields.io/packagist/dt/tylercd100/laravel-notify.svg?style=flat-square)](https://packagist.org/packages/tylercd100/laravel-notify)
+
+Laravel Notify is a Laravel 5 package that will let you send notification message to various services.
+
+Currently supported notification channels via [Monolog](https://github.com/Seldaek/monolog)
+- Email
+- [Pushover](https://pushover.net/)
+- [Slack](https://slack.com/)
+- [Hipchat](https://www.hipchat.com/)
+- [Fleephook](https://fleep.io/)
+- [Flowdock](https://www.flowdock.com/)
+- [Plivo](https://www.plivo.com/) an SMS messaging service.
+- [Twilio](https://www.twilio.com/) an SMS messaging service.
+
+## Installation
+
+Install via [composer](https://getcomposer.org/) - In the terminal:
+```bash
+composer require tylercd100/laravel-notifier
+```
+
+Now add the following to the `providers` array in your `config/app.php`
+```php
+Tylercd100\Notify\Providers\NotifyServiceProvider::class
+```
+
+and this to the `aliases` array in `config/app.php`
+```php
+"Notify" => Tylercd100\Notify\Facades\Notify,
+```
+
+Then you will need to run this in order to copy the config file.
+```bash
+php artisan vendor:publish --provider="Tylercd100\Notify\Providers\NotifyServiceProvider"
+```
+
+## Usage
+
+After you have changed your configuration file you can simply use it like so:
+```php
+Notify::debug("This is a debug message!");
+Notify::info("This is a info message!");
+Notify::notice("This is a notice message!");
+Notify::warning("This is a warning message!");
+Notify::error("This is a error message!");
+Notify::critical("This is a critical message!");
+Notify::alert("This is a alert message!");
+Notify::emergency("This is a emergency message!");
+```
+
+Dont forget to add this to the top of the file 
+```php
+//If you updated your aliases array in "config/app.php"
+use Notify;
+//or if you didnt...
+use Tylercd100\Notify\Facades\Notify;
+```
+
+## Other Features
+Laravel Notify also exposes extra Facades. To use them you will need to add them to your `config/app.php` file in your aliases array.
+```php
+"HipChat"   => Tylercd100\Notify\Facades\HipChat::class,
+"Pushover"  => Tylercd100\Notify\Facades\Pushover::class,
+"Flowdock"  => Tylercd100\Notify\Facades\Flowdock::class,
+"FleepHook" => Tylercd100\Notify\Facades\FleepHook::class,
+"Slack"     => Tylercd100\Notify\Facades\Slack::class,
+"Plivo"     => Tylercd100\Notify\Facades\Plivo::class,
+"Twilio"    => Tylercd100\Notify\Facades\Twilio::class,
+```
+And then use them like this
+```php
+Slack::info("This is information!");
+Pushover::critical("Everything is broken and the server room caught fire!");
+```
