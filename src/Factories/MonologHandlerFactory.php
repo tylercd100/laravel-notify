@@ -12,16 +12,17 @@ class MonologHandlerFactory
      * @param  array  $config An array of config values to use
      * @return \Monolog\Handler\HandlerInterface
      */
-    public static function create($name,array $config = []){
-        return call_user_func([MonologHandlerFactory::class,$name],$config);
+    public static function create($name, array $config = [], $title = null){
+        return call_user_func([MonologHandlerFactory::class,$name], $config, $title);
     }
 
     /**
      * Returns a PushoverHandler
-     * @param  array $config An array of config values to use
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
      * @return \Monolog\Handler\HandlerInterface
      */
-    protected static function pushover(array $config = []){
+    protected static function pushover(array $config = [], $title = null){
         $defaults = [
             "title" => null,
             "level" => Logger::DEBUG,
@@ -34,6 +35,8 @@ class MonologHandlerFactory
         ];
 
         $c = array_merge($defaults,$config);
+
+        $c['title'] = $title;
 
         return new \Monolog\Handler\PushoverHandler(
             $c['token'], 
@@ -50,10 +53,11 @@ class MonologHandlerFactory
 
     /**
      * Returns a SlackHandler
-     * @param  array $config An array of config values to use
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
      * @return \Monolog\Handler\HandlerInterface
      */
-    protected static function slack(array $config = []){
+    protected static function slack(array $config = [], $title = null){
         $defaults = [
             'username' => 'Monolog', 
             'useAttachment' => true, 
@@ -80,18 +84,19 @@ class MonologHandlerFactory
 
     /**
      * Returns a HipChatHandler
-     * @param  array $config An array of config values to use
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
      * @return \Monolog\Handler\HandlerInterface
      */
-    protected static function hipchat(array $config = []){
+    protected static function hipchat(array $config = [], $title = null){
         $defaults = [
-            'name' => 'Monolog',
-            'notify' => false,
-            'level' => Logger::CRITICAL,
-            'bubble' => true,
-            'useSSL' => true,
-            'format' => 'text',
-            'host' => 'api.hipchat.com',
+            'name'    => 'Monolog',
+            'notify'  => false,
+            'level'   => Logger::CRITICAL,
+            'bubble'  => true,
+            'useSSL'  => true,
+            'format'  => 'text',
+            'host'    => 'api.hipchat.com',
             'version' => 'v1'
         ];
 
