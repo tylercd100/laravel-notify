@@ -35,7 +35,8 @@ abstract class Base
      */
     public function __construct(array $config = [], Logger $logger = null, $title = ""){
         //Merge the existing config with the provided config
-        $this->config = array_merge(config('notify'),$config);
+        $default = is_array(config('notify')) ? config('notify') : [];
+        $this->config = array_merge($default,$config);
 
         if(!$logger instanceof Logger){
             $logger = new Logger($this->config['channel']);
