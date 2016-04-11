@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.3.0
+- Added Plivo and Twilio support
+
 ### 1.2.0
 - Added email support
 

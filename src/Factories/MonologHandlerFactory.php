@@ -54,6 +54,64 @@ class MonologHandlerFactory
     }
 
     /**
+     * Returns a PlivoHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Tylercd100\Monolog\Handler\PlivoHandler
+     */
+    protected static function plivo(array $config = [], $title = null){
+        $defaults = [
+            'level' => Logger::DEBUG,
+            'bubble' => true,
+            'useSSL' => true,
+            'host' => 'api.plivo.com',
+            'version' => 'v1'
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        return new \Tylercd100\Monolog\Handler\PlivoHandler(
+            $c['token'],
+            $c['auth_id'],
+            $c['from'],
+            $c['to'],
+            $c['level'],
+            $c['bubble'],
+            $c['useSSL'],
+            $c['host'],
+            $c['version']);
+    }
+
+    /**
+     * Returns a TwilioHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Tylercd100\Monolog\Handler\TwilioHandler
+     */
+    protected static function twilio(array $config = [], $title = null){
+        $defaults = [
+            'level' => Logger::DEBUG,
+            'bubble' => true,
+            'useSSL' => true,
+            'host' => 'api.twilio.com',
+            'version' => '2010-04-01'
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        return new \Tylercd100\Monolog\Handler\TwilioHandler(
+            $c['secret'],
+            $c['sid'],
+            $c['from'],
+            $c['to'],
+            $c['level'],
+            $c['bubble'],
+            $c['useSSL'],
+            $c['host'],
+            $c['version']);
+    }
+
+    /**
      * Returns a SlackHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
