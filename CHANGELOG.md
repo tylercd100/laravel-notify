@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.4.3
+- Fixed config
+
 ### 1.4.2
 - Config will now default to an empty array if config is null
 
