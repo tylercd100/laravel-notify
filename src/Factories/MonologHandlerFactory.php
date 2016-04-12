@@ -106,7 +106,8 @@ class MonologHandlerFactory
             'bubble' => true,
             'useSSL' => true,
             'host' => 'api.plivo.com',
-            'version' => 'v1'
+            'version' => 'v1',
+            'limit' => 160,
         ];
 
         $c = array_merge($defaults,$config);
@@ -120,7 +121,8 @@ class MonologHandlerFactory
             $c['bubble'],
             $c['useSSL'],
             $c['host'],
-            $c['version']);
+            $c['version'],
+            $c['limit']);
     }
 
     /**
@@ -135,7 +137,8 @@ class MonologHandlerFactory
             'bubble' => true,
             'useSSL' => true,
             'host' => 'api.twilio.com',
-            'version' => '2010-04-01'
+            'version' => '2010-04-01',
+            'limit' => 160,
         ];
 
         $c = array_merge($defaults,$config);
@@ -149,7 +152,8 @@ class MonologHandlerFactory
             $c['bubble'],
             $c['useSSL'],
             $c['host'],
-            $c['version']);
+            $c['version'],
+            $c['limit']);
     }
 
     /**

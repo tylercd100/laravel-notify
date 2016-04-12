@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.5.0
+- Can now set the SMS character limit from the config
+
 ### 1.4.2
 - Config will now default to an empty array if config is null
 

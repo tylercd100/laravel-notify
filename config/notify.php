@@ -67,6 +67,7 @@ return [
         'token'   => env('PLIVO_AUTH_TOKEN'),
         'to'      => env('PLIVO_TO'),
         'from'    => env('PLIVO_FROM'),
+        'limit'   => 160,
     ],
 
     /**
@@ -77,5 +78,6 @@ return [
         'secret' => env('TWILIO_AUTH_SECRET'),
         'to'     => env('TWILIO_TO'),
         'from'   => env('TWILIO_FROM'),
+        'limit'  => 160,
     ]
 ];

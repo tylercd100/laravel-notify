@@ -30,7 +30,7 @@
         "php": "^5.5.9|^7.0",
         "illuminate/support": "^5.0.0",
         "monolog/monolog": "^1.11",
-        "tylercd100/monolog-sms":"^1.1.0"
+        "tylercd100/monolog-sms":"^1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8|^5.0",
