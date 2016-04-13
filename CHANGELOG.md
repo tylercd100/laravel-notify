@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.6.0
+- Added support for Raven (A driver for Sentry)
+
 ### 1.5.0
 - Can now set the SMS character limit from the config
 
