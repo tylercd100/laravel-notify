@@ -12,6 +12,7 @@ use Tylercd100\Notify\Drivers\FleepHook;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Twilio;
+use Tylercd100\Notify\Drivers\Raven;
 
 class NotifyServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class NotifyServiceProvider extends ServiceProvider
             'notify-plivo' => Plivo::class,
             'notify-fleephook' => FleepHook::class,
             'notify-flowdock' => Flowdock::class,
+            'notify-raven' => Raven::class,
         ];
 
         $this->registerSingletonsFromMap($registerMap);
