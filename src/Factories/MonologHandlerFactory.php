@@ -42,15 +42,15 @@ class MonologHandlerFactory
         $c['title'] = $title;
 
         return new \Monolog\Handler\PushoverHandler(
-            $c['token'], 
-            $c['users'], 
-            $c['title'], 
-            $c['level'], 
-            $c['bubble'], 
-            $c['useSSL'], 
-            $c['highPriorityLevel'], 
-            $c['emergencyLevel'], 
-            $c['retry'], 
+            $c['token'],
+            $c['users'],
+            $c['title'],
+            $c['level'],
+            $c['bubble'],
+            $c['useSSL'],
+            $c['highPriorityLevel'],
+            $c['emergencyLevel'],
+            $c['retry'],
             $c['expire']);
     }
 
@@ -69,8 +69,8 @@ class MonologHandlerFactory
         $c = array_merge($defaults,$config);
 
         return new \Monolog\Handler\FlowdockHandler(
-            $c['token'], 
-            $c['level'], 
+            $c['token'],
+            $c['level'],
             $c['bubble']);
     }
 
@@ -89,8 +89,8 @@ class MonologHandlerFactory
         $c = array_merge($defaults,$config);
 
         return new \Monolog\Handler\FleepHookHandler(
-            $c['token'], 
-            $c['level'], 
+            $c['token'],
+            $c['level'],
             $c['bubble']);
     }
 
@@ -157,6 +157,28 @@ class MonologHandlerFactory
     }
 
     /**
+     * Returns a RavenHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Monolog\Handler\RavenHandler
+     */
+    protected static function raven(array $config = [], $title = null){
+        $defaults = [
+            'dsn'    => null,
+            'level'  => Logger::ERROR,
+            'bubble' => true,
+        ];
+
+        $c = array_merge($defaults, $config);
+
+        return new \Monolog\Handler\RavenHandler(
+            new \Raven_Client($c['dsn'], array_except($c, ['dsn'])),
+            $c['level'],
+            $c['bubble']
+        );
+    }
+
+    /**
      * Returns a SlackHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
@@ -164,20 +186,20 @@ class MonologHandlerFactory
      */
     protected static function slack(array $config = [], $title = null){
         $defaults = [
-            'username' => 'Monolog', 
-            'useAttachment' => true, 
-            'iconEmoji' => null, 
-            'level' => Logger::DEBUG, 
-            'bubble' => true, 
-            'useShortAttachment' => false, 
+            'username' => 'Monolog',
+            'useAttachment' => true,
+            'iconEmoji' => null,
+            'level' => Logger::DEBUG,
+            'bubble' => true,
+            'useShortAttachment' => false,
             'includeContextAndExtra' => false
         ];
 
         $c = array_merge($defaults,$config);
 
         return new \Monolog\Handler\SlackHandler(
-            $c['token'], 
-            $c['channel'], 
+            $c['token'],
+            $c['channel'],
             $c['username'],
             $c['useAttachment'],
             $c['iconEmoji'],
@@ -229,7 +251,7 @@ class MonologHandlerFactory
     protected static function mail(array $config = [], $title = null)
     {
         if (isset($config['smtp']) && $config['smtp']) {
-            return self::swiftMail($config,$title);            
+            return self::swiftMail($config,$title);
         } else {
             return self::nativeMail($config,$title);
         }
@@ -244,7 +266,7 @@ class MonologHandlerFactory
     protected static function swiftMail(array $config, $title = null)
     {
         $defaults = [
-            'level' => Logger::DEBUG, 
+            'level' => Logger::DEBUG,
             'bubble' => true
         ];
 
@@ -255,7 +277,7 @@ class MonologHandlerFactory
         return new \Monolog\Handler\SwiftMailerHandler(
             Mail::getSwiftMailer(),
             Swift_Message::newInstance($c['title'])->setFrom($c['from'])->setTo($c['to']),
-            $c['level'], 
+            $c['level'],
             $c['bubble']
         );
     }
@@ -282,8 +304,8 @@ class MonologHandlerFactory
             $c['to'],
             $c['title'],
             $c['from'],
-            $c['level'], 
-            $c['bubble'], 
+            $c['level'],
+            $c['bubble'],
             $c['maxColumnWidth']
         );
     }

@@ -79,5 +79,13 @@ return [
         'to'     => env('TWILIO_TO'),
         'from'   => env('TWILIO_FROM'),
         'limit'  => 160,
+    ],
+    
+    /**
+     * Raven settings
+     */
+    'raven'=>[
+        'dsn'    => env('RAVEN_DSN'),
+        'level' => 'info',
     ]
 ];
