@@ -18,6 +18,7 @@ Currently supported notification channels via [Monolog](https://github.com/Selda
 - [Flowdock](https://www.flowdock.com/)
 - [Plivo](https://www.plivo.com/) an SMS messaging service.
 - [Twilio](https://www.twilio.com/) an SMS messaging service.
+- [Sentry](https://getsentry.com) via [Raven](https://github.com/getsentry/raven-php)
 
 ## Installation
 
@@ -53,6 +54,9 @@ Notify::error("This is a error message!");
 Notify::critical("This is a critical message!");
 Notify::alert("This is a alert message!");
 Notify::emergency("This is a emergency message!");
+
+# Add context
+Notify::info("This is a info message with context!",['user'=>$user, 'data'=>$data]);
 ```
 
 Dont forget to add this to the top of the file 
@@ -73,6 +77,7 @@ Laravel Notify also exposes extra Facades. To use them you will need to add them
 "Slack"     => Tylercd100\Notify\Facades\Slack::class,
 "Plivo"     => Tylercd100\Notify\Facades\Plivo::class,
 "Twilio"    => Tylercd100\Notify\Facades\Twilio::class,
+"Raven"     => Tylercd100\Notify\Facades\Raven::class,
 ```
 And then use them like this
 ```php
