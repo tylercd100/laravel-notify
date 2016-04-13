@@ -7,7 +7,7 @@ return [
     /**
      * Drivers to use for your notifications
      */
-    'drivers' => ['raven'],
+    'drivers' => ['mail'],
 
     /**
      * Mail settings
