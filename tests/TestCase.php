@@ -130,6 +130,14 @@ class TestCase extends Orchestra
                 'secret' => "Value",
                 'to'     => "Value",
                 'from'   => "Value",
+            ],
+    
+            /**
+             * Raven settings
+             */
+            'raven'=>[
+                'dsn'    => null,
+                'level' => 'error',
             ]
         ]);
     }
