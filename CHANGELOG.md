@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.7.0
+- Added psr/log interfaces
+
 ### 1.6.0
 - Added support for Raven (A driver for Sentry)
 

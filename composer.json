@@ -30,7 +30,8 @@
         "php": "^5.5.9|^7.0",
         "illuminate/support": "^5.0.0",
         "monolog/monolog": "^1.11",
-        "tylercd100/monolog-sms":"^1.2"
+        "tylercd100/monolog-sms":"^1.2",
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "raven/raven": "~0.11",
