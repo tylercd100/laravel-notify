@@ -4,15 +4,11 @@ namespace Tylercd100\Notify\Drivers;
 
 use Monolog\Logger;
 use Monolog\Handler\HandlerInterface;
+use Psr\Log\LoggerInterface;
 use Tylercd100\Notify\Factories\MonologHandlerFactory as Factory;
 
-abstract class Base
+abstract class Base implements LoggerInterface
 {
-    /**
-     * @var array
-     */
-    protected $levels = ["debug","info","notice","warning","error","critical","alert","emergency"];
-
     /**
      * @var array
      */
@@ -86,15 +82,123 @@ abstract class Base
     }
 
     /**
-     * This will call the log functions of Monolog\Logger
-     * @param  string $method    The method to call
-     * @param  array  $arguments The arguments provided
-     * @return void
+     * System is unusable.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
      */
-    public function __call($method, $arguments)
+    public function emergency($message, array $context = array())
     {
-        if(in_array($method, $this->levels)){
-            call_user_func_array([$this->logger,$method],$arguments);
-        }
+        $this->logger->emergency($message,$context);
     }
+
+    /**
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function alert($message, array $context = array())
+    {
+        $this->logger->alert($message,$context);
+    }
+
+    /**
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function critical($message, array $context = array())
+    {
+        $this->logger->critical($message,$context);
+    }
+
+    /**
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function error($message, array $context = array())
+    {
+        $this->logger->error($message,$context);
+    }
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function warning($message, array $context = array())
+    {
+        $this->logger->warning($message,$context);
+    }
+
+    /**
+     * Normal but significant events.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function notice($message, array $context = array())
+    {
+        $this->logger->notice($message,$context);
+    }
+
+    /**
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function info($message, array $context = array())
+    {
+        $this->logger->info($message,$context);
+    }
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function debug($message, array $context = array())
+    {
+        $this->logger->debug($message,$context);
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function log($level, $message, array $context = array())
+    {
+        $this->logger->log($message,$context);
+    }
+
 }
