@@ -198,7 +198,7 @@ abstract class Base implements LoggerInterface
      */
     public function log($level, $message, array $context = array())
     {
-        $this->logger->log($message,$context);
+        $this->logger->log($level, $message, $context);
     }
 
 }
