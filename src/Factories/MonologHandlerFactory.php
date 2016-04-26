@@ -58,7 +58,7 @@ class MonologHandlerFactory
      * Returns a PushoverHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\PushoverHandler
+     * @return \Tylercd100\Monolog\Handler\MailgunHandler
      */
     protected static function mailgun(array $config = [], $title = null){
         $defaults = [
