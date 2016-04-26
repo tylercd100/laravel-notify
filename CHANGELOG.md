@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.8.0
+- Added Mailgun support
+
 ### 1.7.0
 - Added psr/log interfaces
 

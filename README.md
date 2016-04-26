@@ -19,6 +19,7 @@ Currently supported notification channels via [Monolog](https://github.com/Selda
 - [Plivo](https://www.plivo.com/) an SMS messaging service.
 - [Twilio](https://www.twilio.com/) an SMS messaging service.
 - [Sentry](https://getsentry.com) via [Raven](https://github.com/getsentry/raven-php)
+- [Mailgun](https://mailgun.com)
 
 ## Installation
 
@@ -78,6 +79,7 @@ Laravel Notify also exposes extra Facades. To use them you will need to add them
 "Plivo"     => Tylercd100\Notify\Facades\Plivo::class,
 "Twilio"    => Tylercd100\Notify\Facades\Twilio::class,
 "Raven"     => Tylercd100\Notify\Facades\Raven::class,
+"Mailgun"   => Tylercd100\Notify\Facades\Mailgun::class,
 ```
 And then use them like this
 ```php

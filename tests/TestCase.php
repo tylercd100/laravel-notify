@@ -67,6 +67,16 @@ class TestCase extends Orchestra
                 'from'=>'from@address.com',
                 'smtp'=>true,
             ],
+
+            /**
+             * Mailgun settings
+             */
+            'mailgun'=>[
+                'to'  =>'to@address.com',
+                'from'=>'from@address.com',
+                'token' => 'token',
+                'domain'=> 'test.com',
+            ],
             
             /**
              * Pushover settings

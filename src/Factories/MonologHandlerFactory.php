@@ -55,6 +55,39 @@ class MonologHandlerFactory
     }
 
     /**
+     * Returns a PushoverHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Tylercd100\Monolog\Handler\MailgunHandler
+     */
+    protected static function mailgun(array $config = [], $title = null){
+        $defaults = [
+            "title" => null,
+            "level" => Logger::CRITICAL,
+            "bubble" => true,
+            "useSSL" => true,
+            "host" => 'api.mailgun.net',
+            "version" => 'v3'
+        ];
+
+        $c = array_merge($defaults,$config);
+
+        $c['title'] = $title;
+
+        return new \Tylercd100\Monolog\Handler\MailgunHandler(
+            $c["to"],
+            $c["title"],
+            $c["from"],
+            $c["token"],
+            $c["domain"],
+            $c["level"],
+            $c["bubble"],
+            $c["useSSL"],
+            $c["host"],
+            $c["version"]);
+    }
+
+    /**
      * Returns a FlowdockHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use

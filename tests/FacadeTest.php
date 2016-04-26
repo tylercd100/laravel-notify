@@ -4,6 +4,7 @@ namespace Tylercd100\Notify\Tests;
 
 use Tylercd100\Notify\Drivers\FromConfig as Notify;
 use Tylercd100\Notify\Drivers\HipChat;
+use Tylercd100\Notify\Drivers\Mailgun;
 use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
@@ -13,6 +14,7 @@ use Tylercd100\Notify\Drivers\Raven;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Twilio;
 use Tylercd100\Notify\Facades\HipChat as HipChatFacade;
+use Tylercd100\Notify\Facades\Mailgun as MailgunFacade;
 use Tylercd100\Notify\Facades\Mail as MailFacade;
 use Tylercd100\Notify\Facades\Notify as NotifyFacade;
 use Tylercd100\Notify\Facades\Plivo as PlivoFacade;
@@ -58,6 +60,11 @@ class FacadeTest extends TestCase
     public function testHipChatFacade(){
         $obj = HipChatFacade::getFacadeRoot();
         $this->assertInstanceOf(HipChat::class,$obj);
+    }
+
+    public function testMailgunFacade(){
+        $obj = MailgunFacade::getFacadeRoot();
+        $this->assertInstanceOf(Mailgun::class,$obj);
     }
 
     public function testSlackFacade(){
