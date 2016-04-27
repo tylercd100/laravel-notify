@@ -65,7 +65,6 @@ class MonologHandlerFactory
             "title" => null,
             "level" => Logger::CRITICAL,
             "bubble" => true,
-            "useSSL" => true,
             "host" => 'api.mailgun.net',
             "version" => 'v3'
         ];
@@ -82,7 +81,6 @@ class MonologHandlerFactory
             $c["domain"],
             $c["level"],
             $c["bubble"],
-            $c["useSSL"],
             $c["host"],
             $c["version"]);
     }
