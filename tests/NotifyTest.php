@@ -8,14 +8,16 @@ use Tylercd100\Notify\Drivers\FromConfig as Notify;
 class NotifyTest extends TestCase
 {
 
-    public function testAllLogLevelMethods(){
+    public function testAllLogLevelMethods()
+    {
         $levels = ["debug","info","notice","warning","error","critical","alert","emergency"];
         foreach ($levels as $level) {
             $result = $this->doLogLevel($level);
         }
     }
 
-    protected function doLogLevel($level){
+    protected function doLogLevel($level)
+    {
         $mock = $this->getMock(Logger::class, [$level], ["Testing"]);
         
         $mock->expects($this->once())
@@ -25,4 +27,5 @@ class NotifyTest extends TestCase
 
         $obj->{$level}("test message");
     }
+
 }

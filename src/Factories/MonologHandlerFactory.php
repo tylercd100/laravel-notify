@@ -5,6 +5,7 @@ namespace Tylercd100\Notify\Factories;
 use Mail;
 use Monolog\Logger;
 use Swift_Message;
+use Monolog\Formatter\LineFormatter;
 
 class MonologHandlerFactory
 {
@@ -16,7 +17,15 @@ class MonologHandlerFactory
      * @return \Monolog\Handler\HandlerInterface
      */
     public static function create($name, array $config = [], $title = null){
-        return call_user_func([MonologHandlerFactory::class,$name], $config, $title);
+        $handler = call_user_func([MonologHandlerFactory::class,$name], $config, $title);
+        
+        // Keep newline characters
+        $format = ['mail', 'mailgun'];
+        if(in_array($name, $format)) {
+            $handler->setFormatter(new LineFormatter(null, null, true));
+        }
+
+        return $handler;
     }
 
     /**
