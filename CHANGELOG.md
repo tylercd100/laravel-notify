@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.8.2
+- Emails now use the content type text/html
+
 ### 1.8.1
 - Added LineFormatter with newlines enabled to the mail and mailgun handlers
 

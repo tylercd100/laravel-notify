@@ -21,8 +21,13 @@ class MonologHandlerFactory
         
         // Keep newline characters
         $format = ['mail', 'mailgun'];
+        
         if(in_array($name, $format)) {
             $handler->setFormatter(new LineFormatter(null, null, true));
+        }
+
+        if ($handler instanceof NativeMailerHandler) {
+            $handler->setContentType('text/html');
         }
 
         return $handler;
