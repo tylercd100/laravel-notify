@@ -26,7 +26,7 @@ class MonologHandlerFactory
             $handler->setFormatter(new LineFormatter(null, null, true));
         }
 
-        if ($handler instanceof NativeMailerHandler) {
+        if ($handler instanceof \Monolog\Handler\NativeMailerHandler) {
             $handler->setContentType('text/html');
         }
 

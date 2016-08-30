@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.8.3
+- Quick fix! Correctly sets text/html on native emails (non-SMTP)
+
 ### 1.8.2
 - Emails now use the content type text/html
 
