@@ -20,7 +20,7 @@ class MonologHandlerFactory
         $handler = call_user_func([MonologHandlerFactory::class,$name], $config, $title);
         
         // Keep newline characters
-        $format = ['mail', 'mailgun'];
+        $format = ['fleephook', 'hipchat', 'mail', 'mailgun', 'pushover', 'raven', 'slack'];
         
         if(in_array($name, $format)) {
             $handler->setFormatter(new LineFormatter(null, null, true));

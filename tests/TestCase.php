@@ -57,7 +57,18 @@ class TestCase extends Orchestra
             /**
              * The drivers to use
              */
-            'drivers' => ['pushover', 'slack', 'hipchat', 'mail'],
+            'drivers' => [
+                'fleephook',
+                'flowdock',
+                'hipchat',
+                'mail',
+                'mailgun',
+                'plivo',
+                'pushover',
+                'raven',
+                'slack',
+                'twilio',
+            ],
 
             /**
              * Mail settings
