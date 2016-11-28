@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.8.5
+- Correctly sets text/html on SMTP emails
+
 ### 1.8.4
 - Added LineFormatter with newlines enabled to the Fleephook, Hipchat, Pushover, Raven, and Slack handlers
 
