@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 1.9.0
+- Fixed outdated dependencies for laravel 5.5
+
 ### 1.8.5
 - Correctly sets text/html on SMTP emails
 

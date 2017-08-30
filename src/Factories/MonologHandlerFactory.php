@@ -319,12 +319,14 @@ class MonologHandlerFactory
 
         $c['title'] = $title;
 
+        $swift = new Swift_Message($c['title']);
+        $swift->setFrom($c['from'])
+            ->setTo($c['to'])
+            ->setContentType('text/html');
+
         return new \Monolog\Handler\SwiftMailerHandler(
             Mail::getSwiftMailer(),
-            Swift_Message::newInstance($c['title'])
-                ->setFrom($c['from'])
-                ->setTo($c['to'])
-                ->setContentType('text/html'),
+            $swift,
             $c['level'],
             $c['bubble']
         );

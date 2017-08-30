@@ -18,7 +18,7 @@ class NotifyTest extends TestCase
 
     protected function doLogLevel($level)
     {
-        $mock = $this->getMock(Logger::class, [$level], ["Testing"]);
+        $mock = $this->createMock(Logger::class, [$level], ["Testing"]);
         
         $mock->expects($this->once())
              ->method($level);
