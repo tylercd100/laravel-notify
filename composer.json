@@ -27,7 +27,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "illuminate/support": "^5.0",
+        "illuminate/support": "^5.0.33",
         "monolog/monolog": "^1.11",
         "php": "^5.5.9|^7.0",
         "psr/log": "^1.0",
@@ -36,8 +36,8 @@
     },
     "require-dev": {
         "sentry/sentry": "~1.7",
-        "phpunit/phpunit": "^5.0|^6.0",
-        "orchestra/testbench": "^3.1.0"
+        "phpunit/phpunit": "^5.7.21|^6.3.0",
+        "orchestra/testbench": "^3.1.10"
     },
     "suggest": {
         "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."
