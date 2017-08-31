@@ -40,16 +40,6 @@ Install via [composer](https://getcomposer.org/) - In the terminal:
 composer require tylercd100/laravel-notify
 ```
 
-Now add the following to the `providers` array in your `config/app.php`
-```php
-Tylercd100\Notify\Providers\NotifyServiceProvider::class
-```
-
-and this to the `aliases` array in `config/app.php`
-```php
-"Notify" => Tylercd100\Notify\Facades\Notify::class,
-```
-
 Then you will need to run this in order to copy the config file.
 ```bash
 php artisan vendor:publish --provider="Tylercd100\Notify\Providers\NotifyServiceProvider"
