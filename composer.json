@@ -27,19 +27,27 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "illuminate/support": "^5.0.33",
+        "illuminate/support": "^5.5",
         "monolog/monolog": "^1.11",
-        "php": "^5.5.9|^7.0",
+        "php": "^7.0",
         "psr/log": "^1.0",
         "tylercd100/monolog-mailgun": "^2.0",
         "tylercd100/monolog-sms":"^1.2"
     },
     "require-dev": {
         "sentry/sentry": "~1.7",
-        "phpunit/phpunit": "^5.7.21|^6.3.0",
-        "orchestra/testbench": "^3.1.10"
+        "phpunit/phpunit": "^6.3.0",
+        "orchestra/testbench": "^3.5"
     },
     "suggest": {
         "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."
+    },
+    "extra": {
+        "providers": [
+            "Tylercd100\\Notify\\Providers\\NotifyServiceProvider"
+        ],
+        "aliases": {
+            "Notify": "Tylercd100\\Notify\\Facades\\Notify"
+        }
     }
 }

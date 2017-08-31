@@ -21,11 +21,23 @@ Currently supported notification channels via [Monolog](https://github.com/Selda
 - [Sentry](https://getsentry.com) via [Raven](https://github.com/getsentry/raven-php)
 - [Mailgun](https://mailgun.com)
 
+## Version Compatibility
+
+ Laravel  | Laravel Notify
+:---------|:----------------
+ 5.1.x    | 1.x
+ 5.2.x    | 1.x
+ 5.3.x    | 1.x
+ 5.4.x    | 1.x
+ 5.5.x    | 2.x
+
 ## Installation
+
+Version 2.x uses [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery). If you are using 1.x you will need to follow these [instructions.](https://github.com/tylercd100/laravel-notify/tree/1.8.5)
 
 Install via [composer](https://getcomposer.org/) - In the terminal:
 ```bash
-composer require tylercd100/laravel-notifier
+composer require tylercd100/laravel-notify
 ```
 
 Now add the following to the `providers` array in your `config/app.php`
@@ -58,14 +70,6 @@ Notify::emergency("This is a emergency message!");
 
 # Add context
 Notify::info("This is a info message with context!",['user'=>$user, 'data'=>$data]);
-```
-
-Dont forget to add this to the top of the file 
-```php
-//If you updated your aliases array in "config/app.php"
-use Notify;
-//or if you didnt...
-use Tylercd100\Notify\Facades\Notify;
 ```
 
 ## Other Features

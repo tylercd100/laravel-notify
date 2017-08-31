@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 2.1.0
+- Auto Package Discovery
+- Removed support for 5.4, 5.3, 5.2, 5.1
+
 ### 2.0.0
 - Fixed outdated dependencies for laravel 5.5
 - Removed support for PHP 5.5.9
