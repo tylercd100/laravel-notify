@@ -36,7 +36,7 @@
     },
     "require-dev": {
         "sentry/sentry": "~1.7",
-        "phpunit/phpunit": "^4.8|^5.0|^6.0",
+        "phpunit/phpunit": "^5.0|^6.0",
         "orchestra/testbench": "^3.1.0"
     },
     "suggest": {
