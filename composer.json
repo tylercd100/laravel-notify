@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "^6.0.4",
+        "illuminate/support": "^6.0",
         "monolog/monolog": "^1.11",
         "php": "^7.0",
         "psr/log": "^1.0",
