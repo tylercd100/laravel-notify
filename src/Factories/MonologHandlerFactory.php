@@ -6,6 +6,7 @@ use Mail;
 use Monolog\Logger;
 use Swift_Message;
 use Monolog\Formatter\LineFormatter;
+use Illuminate\Support\Arr;
 
 class MonologHandlerFactory
 {
@@ -217,7 +218,7 @@ class MonologHandlerFactory
         $c = array_merge($defaults, $config);
 
         return new \Monolog\Handler\RavenHandler(
-            new \Raven_Client($c['dsn'], array_except($c, ['dsn'])),
+            new \Raven_Client($c['dsn'], Arr::except($c, ['dsn'])),
             $c['level'],
             $c['bubble']
         );

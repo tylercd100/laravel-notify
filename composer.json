@@ -27,17 +27,17 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "illuminate/support": "^5.5",
+        "illuminate/support": "^6.0",
         "monolog/monolog": "^1.11",
-        "php": "^7.0",
+        "php": "^7.2",
         "psr/log": "^1.0",
         "tylercd100/monolog-mailgun": "^2.0",
         "tylercd100/monolog-sms":"^1.2"
     },
     "require-dev": {
         "sentry/sentry": "~1.7",
-        "phpunit/phpunit": "^6.3.0",
-        "orchestra/testbench": "^3.5"
+        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "^4.0"
     },
     "suggest": {
         "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."

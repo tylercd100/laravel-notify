@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-notify` will be documented in this file.
 
+### 3.0.0
+- Updated for Laravel 6
+
 ### 2.1.0
 - Auto Package Discovery
 - Removed support for 5.4, 5.3, 5.2, 5.1
