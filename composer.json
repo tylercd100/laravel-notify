@@ -3,8 +3,8 @@
     "description": "",
     "keywords": [
         "laravel",
-        "monolog",
         "notifications",
+        "monolog",
         "tylercd100"
     ],
     "homepage": "https://github.com/tylercd100/laravel-notify",
@@ -15,32 +15,32 @@
             "email": "tylercd100@gmail.com"
         }
     ],
-    "require": {
-        "illuminate/support": "^6.0",
-        "monolog/monolog": "^1.11",
-        "php": "^7.0",
-        "psr/log": "^1.0",
-        "tylercd100/monolog-mailgun": "^2.0",
-        "tylercd100/monolog-sms": "^1.2"
-    },
-    "require-dev": {
-        "sentry/sentry": "~1.7",
-        "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "^3.5",
-        "kubawerlos/composer-json-fixer": "^2.1"
-    },
-    "suggest": {
-        "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."
-    },
-    "autoload": {
-        "psr-4": {
-            "Tylercd100\\Notify\\": "src/"
+    "autoload":{
+        "psr-4":{
+            "Tylercd100\\Notify\\":"src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Tylercd100\\Notify\\Tests\\": "tests/"
         }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "illuminate/support": "^6.0",
+        "monolog/monolog": "^1.11",
+        "php": "^7.2",
+        "psr/log": "^1.0",
+        "tylercd100/monolog-mailgun": "^2.0",
+        "tylercd100/monolog-sms":"^1.2"
+    },
+    "require-dev": {
+        "sentry/sentry": "~1.7",
+        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "^4.0"
+    },
+    "suggest": {
+        "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."
     },
     "extra": {
         "providers": [
