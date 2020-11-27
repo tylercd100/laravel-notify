@@ -32,8 +32,8 @@
         "monolog/monolog": "^2.0",
         "php": "^7.2",
         "psr/log": "^1.0",
-        "tylercd100/monolog-mailgun": "dev-master",
-        "tylercd100/monolog-sms":"dev-master"
+        "tylercd100/monolog-mailgun": "dev-next",
+        "tylercd100/monolog-sms":"dev-next"
     },
     "require-dev": {
         "sentry/sentry": "~1.7",
