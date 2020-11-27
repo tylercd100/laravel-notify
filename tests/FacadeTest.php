@@ -3,17 +3,14 @@
 namespace Tylercd100\Notify\Tests;
 
 use Tylercd100\Notify\Drivers\FromConfig as Notify;
-use Tylercd100\Notify\Drivers\HipChat;
 use Tylercd100\Notify\Drivers\Mailgun;
 use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
 use Tylercd100\Notify\Drivers\Flowdock;
 use Tylercd100\Notify\Drivers\FleepHook;
-use Tylercd100\Notify\Drivers\Raven;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Twilio;
-use Tylercd100\Notify\Facades\HipChat as HipChatFacade;
 use Tylercd100\Notify\Facades\Mailgun as MailgunFacade;
 use Tylercd100\Notify\Facades\Mail as MailFacade;
 use Tylercd100\Notify\Facades\Notify as NotifyFacade;
@@ -21,7 +18,6 @@ use Tylercd100\Notify\Facades\Plivo as PlivoFacade;
 use Tylercd100\Notify\Facades\Pushover as PushoverFacade;
 use Tylercd100\Notify\Facades\Slack as SlackFacade;
 use Tylercd100\Notify\Facades\Twilio as TwilioFacade;
-use Tylercd100\Notify\Facades\Raven as RavenFacade;
 use Tylercd100\Notify\Facades\Flowdock as FlowdockFacade;
 use Tylercd100\Notify\Facades\FleepHook as FleepHookFacade;
 
@@ -50,16 +46,6 @@ class FacadeTest extends TestCase
     public function testTwilioFacade(){
         $obj = TwilioFacade::getFacadeRoot();
         $this->assertInstanceOf(Twilio::class,$obj);
-    }
-
-    public function testRavenFacade(){
-        $obj = RavenFacade::getFacadeRoot();
-        $this->assertInstanceOf(Raven::class,$obj);
-    }
-
-    public function testHipChatFacade(){
-        $obj = HipChatFacade::getFacadeRoot();
-        $this->assertInstanceOf(HipChat::class,$obj);
     }
 
     public function testMailgunFacade(){

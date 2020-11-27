@@ -46,16 +46,6 @@ return [
     ],
 
     /**
-     * HipChat settings
-     */
-    'hipchat'=>[
-        'token' => env('HIPCHAT_APP_TOKEN'),
-        'room'  => 'room',
-        'name'  => 'name',
-        'notify'=> true,
-    ],
-
-    /**
      * Flowdock settings
      */
     'flowdock'=>[
@@ -89,13 +79,5 @@ return [
         'to'     => env('TWILIO_TO'),
         'from'   => env('TWILIO_FROM'),
         'limit'  => 160,
-    ],
-    
-    /**
-     * Raven settings
-     */
-    'raven'=>[
-        'dsn'    => env('RAVEN_DSN'),
-        'level' => 'info',
     ]
 ];

@@ -13,12 +13,10 @@ Currently supported notification channels via [Monolog](https://github.com/Selda
 - Email
 - [Pushover](https://pushover.net/)
 - [Slack](https://slack.com/)
-- [Hipchat](https://www.hipchat.com/)
 - [Fleephook](https://fleep.io/)
 - [Flowdock](https://www.flowdock.com/)
 - [Plivo](https://www.plivo.com/) an SMS messaging service.
 - [Twilio](https://www.twilio.com/) an SMS messaging service.
-- [Sentry](https://getsentry.com) via [Raven](https://github.com/getsentry/raven-php)
 - [Mailgun](https://mailgun.com)
 
 ## Version Compatibility
@@ -66,14 +64,12 @@ Notify::info("This is a info message with context!",['user'=>$user, 'data'=>$dat
 ## Other Features
 Laravel Notify also exposes extra Facades. To use them you will need to add them to your `config/app.php` file in your aliases array.
 ```php
-"HipChat"   => Tylercd100\Notify\Facades\HipChat::class,
 "Pushover"  => Tylercd100\Notify\Facades\Pushover::class,
 "Flowdock"  => Tylercd100\Notify\Facades\Flowdock::class,
 "FleepHook" => Tylercd100\Notify\Facades\FleepHook::class,
 "Slack"     => Tylercd100\Notify\Facades\Slack::class,
 "Plivo"     => Tylercd100\Notify\Facades\Plivo::class,
 "Twilio"    => Tylercd100\Notify\Facades\Twilio::class,
-"Raven"     => Tylercd100\Notify\Facades\Raven::class,
 "Mailgun"   => Tylercd100\Notify\Facades\Mailgun::class,
 ```
 And then use them like this
