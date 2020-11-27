@@ -9,6 +9,7 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: 7.2 # Laravel >= 8.0 doesn't support PHP 7.2
+      COMPOSER_FLAGS=""
 
 env:
     matrix:
