@@ -200,6 +200,8 @@ class MonologHandlerFactory
             $c['host'],
             $c['version'],
             $c['limit']);
+    }
+
     /**
      * Returns a SentryHandler
      * @param  array  $config An array of config values to use
