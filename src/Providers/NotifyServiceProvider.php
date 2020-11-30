@@ -11,6 +11,7 @@ use Tylercd100\Notify\Drivers\Mailgun;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
 use Tylercd100\Notify\Drivers\Slack;
+use Tylercd100\Notify\Drivers\Sentry;
 use Tylercd100\Notify\Drivers\Twilio;
 
 class NotifyServiceProvider extends ServiceProvider
@@ -26,6 +27,7 @@ class NotifyServiceProvider extends ServiceProvider
             'notify-mailgun' => Mailgun::class,
             'notify-plivo' => Plivo::class,
             'notify-pushover' => Pushover::class,
+            'notify-sentry' => Sentry::class,
             'notify-slack' => Slack::class,
             'notify-twilio' => Twilio::class,
         ];

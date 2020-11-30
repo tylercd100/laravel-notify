@@ -21,7 +21,7 @@ class MonologHandlerFactory
         $handler = call_user_func([MonologHandlerFactory::class,$name], $config, $title);
 
         // Keep newline characters
-        $format = ['fleephook', 'mail', 'mailgun', 'pushover', 'slack'];
+        $format = ['fleephook', 'mail', 'mailgun', 'pushover', 'slack', 'sentry'];
 
         if(in_array($name, $format)) {
             $handler->setFormatter(new LineFormatter(null, null, true));
@@ -200,6 +200,28 @@ class MonologHandlerFactory
             $c['host'],
             $c['version'],
             $c['limit']);
+    /**
+     * Returns a SentryHandler
+     * @param  array  $config An array of config values to use
+     * @param  string $title The title/subject to use
+     * @return \Sentry\Monolog\Handler
+     */
+    protected static function sentry(array $config = [], $title = null)
+    {
+        $defaults = [
+            'dsn'    => null,
+            'level'  => Logger::ERROR,
+            'bubble' => true,
+        ];
+
+        $c = array_merge($defaults, $config);
+        $client = \Sentry\ClientBuilder::create(Arr::only($c, 'dsn'))->getClient();
+
+        return new \Sentry\Monolog\Handler(
+            new \Sentry\State\Hub($client),
+            $c['level'],
+            $c['bubble']
+        );
     }
 
     /**

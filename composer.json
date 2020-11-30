@@ -45,7 +45,7 @@
         "orchestra/testbench": "^4.0|^5.0|^6.0"
     },
     "suggest": {
-        "sentry/sentry": "Required to use the Raven driver for Sentry (~1.7)."
+        "sentry/sentry": "Required to use the Sentry driver (~3.0)."
     },
     "extra": {
         "providers": [

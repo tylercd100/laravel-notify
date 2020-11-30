@@ -9,6 +9,7 @@ use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
 use Tylercd100\Notify\Drivers\Flowdock;
 use Tylercd100\Notify\Drivers\FleepHook;
+use Tylercd100\Notify\Drivers\Sentry;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Twilio;
 use Tylercd100\Notify\Facades\Mailgun as MailgunFacade;
@@ -18,6 +19,7 @@ use Tylercd100\Notify\Facades\Plivo as PlivoFacade;
 use Tylercd100\Notify\Facades\Pushover as PushoverFacade;
 use Tylercd100\Notify\Facades\Slack as SlackFacade;
 use Tylercd100\Notify\Facades\Twilio as TwilioFacade;
+use Tylercd100\Notify\Facades\Sentry as SentryFacade;
 use Tylercd100\Notify\Facades\Flowdock as FlowdockFacade;
 use Tylercd100\Notify\Facades\FleepHook as FleepHookFacade;
 
@@ -48,6 +50,11 @@ class FacadeTest extends TestCase
         $this->assertInstanceOf(Twilio::class,$obj);
     }
 
+    public function testSentryFacade(){
+        $obj = SentryFacade::getFacadeRoot();
+        $this->assertInstanceOf(Sentry::class,$obj);
+    }
+
     public function testMailgunFacade(){
         $obj = MailgunFacade::getFacadeRoot();
         $this->assertInstanceOf(Mailgun::class,$obj);
@@ -73,5 +80,4 @@ class FacadeTest extends TestCase
         $obj = MailFacade::getFacadeRoot();
         $this->assertInstanceOf(Mail::class,$obj);
     }
-
 }

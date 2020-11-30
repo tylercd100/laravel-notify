@@ -63,6 +63,7 @@ class TestCase extends Orchestra
                 'mailgun',
                 'plivo',
                 'pushover',
+                'sentry',
                 'slack',
                 'twilio',
             ],
@@ -95,6 +96,14 @@ class TestCase extends Orchestra
                     "User",
                 ],
                 'sound' => "Sound",
+            ],
+
+            /**
+             * Sentry settings
+             */
+            'sentry'=>[
+                'dsn'    => null,
+                'level'  => 'error',
             ],
 
             /**
