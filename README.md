@@ -29,7 +29,9 @@ Currently supported notification channels via [Monolog](https://github.com/Selda
  5.3.x    | 1.x
  5.4.x    | 1.x
  5.5.x    | 2.x
- 6.x      | 3.x
+ 6.x      | 3.x and 4.x
+ 7.x      | 4.x
+ 8.x      | 4.x
 
 ## Installation
 
