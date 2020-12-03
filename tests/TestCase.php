@@ -16,7 +16,7 @@ class TestCase extends Orchestra
 
     public function tearDown(): void
     {
-        parent::tearDown();        
+        parent::tearDown();
     }
 
     /**
@@ -38,7 +38,6 @@ class TestCase extends Orchestra
             'Tylercd100\Notify\Facades\Notify',
             'Tylercd100\Notify\Facades\Pushover',
             'Tylercd100\Notify\Facades\Slack',
-            'Tylercd100\Notify\Facades\HipChat',
         ];
     }
 
@@ -60,12 +59,11 @@ class TestCase extends Orchestra
             'drivers' => [
                 'fleephook',
                 'flowdock',
-                'hipchat',
                 'mail',
                 'mailgun',
                 'plivo',
                 'pushover',
-                'raven',
+                'sentry',
                 'slack',
                 'twilio',
             ],
@@ -88,7 +86,7 @@ class TestCase extends Orchestra
                 'token' => 'token',
                 'domain'=> 'test.com',
             ],
-            
+
             /**
              * Pushover settings
              */
@@ -101,22 +99,20 @@ class TestCase extends Orchestra
             ],
 
             /**
+             * Sentry settings
+             */
+            'sentry'=>[
+                'dsn'    => null,
+                'level'  => 'error',
+            ],
+
+            /**
              * Slack settings
              */
             'slack'=>[
                 'token'   => "Token",
                 'channel' => "Value",
                 'username'=> "Value",
-            ],
-
-            /**
-             * HipChat settings
-             */
-            'hipchat'=>[
-                'token' => "Token",
-                'room'  => 'room',
-                'name'  => 'name',
-                'notify'=> true,
             ],
 
             /**
@@ -151,14 +147,6 @@ class TestCase extends Orchestra
                 'secret' => "Value",
                 'to'     => "Value",
                 'from'   => "Value",
-            ],
-    
-            /**
-             * Raven settings
-             */
-            'raven'=>[
-                'dsn'    => null,
-                'level' => 'error',
             ]
         ]);
     }

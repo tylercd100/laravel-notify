@@ -6,13 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Tylercd100\Notify\Drivers\FleepHook;
 use Tylercd100\Notify\Drivers\Flowdock;
 use Tylercd100\Notify\Drivers\FromConfig;
-use Tylercd100\Notify\Drivers\HipChat;
 use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Mailgun;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
-use Tylercd100\Notify\Drivers\Raven;
 use Tylercd100\Notify\Drivers\Slack;
+use Tylercd100\Notify\Drivers\Sentry;
 use Tylercd100\Notify\Drivers\Twilio;
 
 class NotifyServiceProvider extends ServiceProvider
@@ -24,12 +23,11 @@ class NotifyServiceProvider extends ServiceProvider
             'notify' => FromConfig::class,
             'notify-fleephook' => FleepHook::class,
             'notify-flowdock' => Flowdock::class,
-            'notify-hipchat' => HipChat::class,
             'notify-mail' => Mail::class,
             'notify-mailgun' => Mailgun::class,
             'notify-plivo' => Plivo::class,
             'notify-pushover' => Pushover::class,
-            'notify-raven' => Raven::class,
+            'notify-sentry' => Sentry::class,
             'notify-slack' => Slack::class,
             'notify-twilio' => Twilio::class,
         ];
@@ -41,7 +39,7 @@ class NotifyServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../config/notify.php' => base_path('config/notify.php'),
-        ]);   
+        ]);
     }
 
     private function registerSingletonsFromMap($map){

@@ -19,10 +19,10 @@ class MonologHandlerFactory
      */
     public static function create($name, array $config = [], $title = null){
         $handler = call_user_func([MonologHandlerFactory::class,$name], $config, $title);
-        
+
         // Keep newline characters
-        $format = ['fleephook', 'hipchat', 'mail', 'mailgun', 'pushover', 'raven', 'slack'];
-        
+        $format = ['fleephook', 'mail', 'mailgun', 'pushover', 'slack', 'sentry'];
+
         if(in_array($name, $format)) {
             $handler->setFormatter(new LineFormatter(null, null, true));
         }
@@ -203,12 +203,13 @@ class MonologHandlerFactory
     }
 
     /**
-     * Returns a RavenHandler
+     * Returns a SentryHandler
      * @param  array  $config An array of config values to use
      * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\RavenHandler
+     * @return \Sentry\Monolog\Handler
      */
-    protected static function raven(array $config = [], $title = null){
+    protected static function sentry(array $config = [], $title = null)
+    {
         $defaults = [
             'dsn'    => null,
             'level'  => Logger::ERROR,
@@ -216,9 +217,10 @@ class MonologHandlerFactory
         ];
 
         $c = array_merge($defaults, $config);
+        $client = \Sentry\ClientBuilder::create(Arr::only($c, 'dsn'))->getClient();
 
-        return new \Monolog\Handler\RavenHandler(
-            new \Raven_Client($c['dsn'], Arr::except($c, ['dsn'])),
+        return new \Sentry\Monolog\Handler(
+            new \Sentry\State\Hub($client),
             $c['level'],
             $c['bubble']
         );
@@ -253,39 +255,6 @@ class MonologHandlerFactory
             $c['bubble'],
             $c['useShortAttachment'],
             $c['includeContextAndExtra']);
-    }
-
-    /**
-     * Returns a HipChatHandler
-     * @param  array  $config An array of config values to use
-     * @param  string $title The title/subject to use
-     * @return \Monolog\Handler\HipChatHandler
-     */
-    protected static function hipchat(array $config = [], $title = null){
-        $defaults = [
-            'name'    => 'Monolog',
-            'notify'  => false,
-            'level'   => Logger::DEBUG,
-            'bubble'  => true,
-            'useSSL'  => true,
-            'format'  => 'text',
-            'host'    => 'api.hipchat.com',
-            'version' => 'v1'
-        ];
-
-        $c = array_merge($defaults,$config);
-
-        return new \Monolog\Handler\HipChatHandler(
-            $c['token'],
-            $c['room'],
-            $c['name'],
-            $c['notify'],
-            $c['level'],
-            $c['bubble'],
-            $c['useSSL'],
-            $c['format'],
-            $c['host'],
-            $c['version']);
     }
 
     /**

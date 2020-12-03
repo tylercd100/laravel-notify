@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \Illuminate\Filesystem\Filesystem
  */
-class Raven extends Facade
+class Sentry extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class Raven extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'notify-raven';
+        return 'notify-sentry';
     }
 }
