@@ -36,7 +36,7 @@
         "tylercd100/monolog-sms":"^2.0"
     },
     "require-dev": {
-        "sentry/sentry": "dev-php8-support",
+        "sentry/sentry": "^3.1.1",
         "symfony/options-resolver": "^5.1",
         "http-interop/http-factory-guzzle": "^1.0.0",
         "php-http/guzzle7-adapter": "^0.2.0",
@@ -45,7 +45,7 @@
         "orchestra/testbench": "^4.0|^5.0|^6.0"
     },
     "suggest": {
-        "sentry/sentry": "Required to use the Sentry driver (~3.0)."
+        "sentry/sentry": "Required to use the Sentry driver (^3.1.1)."
     },
     "extra": {
         "providers": [
