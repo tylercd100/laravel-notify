@@ -9,12 +9,12 @@ class TestCase extends Orchestra
     /**
      * Setup the test environment.
      */
-    public function setUp(): void
+    public function setUp(): void: void
     {
         parent::setUp();
     }
 
-    public function tearDown(): void
+    public function tearDown(): void: void
     {
         parent::tearDown();
     }
